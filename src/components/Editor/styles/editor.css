@@ -1,14 +1,15 @@
 /* Remove most of the old styles and keep only what's necessary */
 .editor-scroller {
-  min-height: 150px;
+  min-height: 300px;  /* Increased from 150px */
+  max-height: 800px;  /* Increased from 500px */
   border: 0;
-  resize: none;
+  resize: vertical;
   cursor: text;
   display: block;
   position: relative;
   outline: 0;
-  overflow: hidden;
-  resize: vertical;
+  overflow-y: auto; /* Change from hidden to auto for vertical scrolling */
+  overflow-x: hidden; /* Keep horizontal overflow hidden */
 }
 
 .youtube-wrapper {

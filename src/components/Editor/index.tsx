@@ -14,6 +14,7 @@ import { useTheme } from '../../contexts/ThemeContext'
 import EditorTheme from './themes/default'
 import { Toolbar } from './Toolbar'
 import './styles/editor-custom.css'
+import './styles/editor.css'  // Add this import if not already present
 
 export function Editor() {
   const { theme: appTheme } = useTheme()
@@ -28,10 +29,7 @@ export function Editor() {
       QuoteNode,
       HeadingNode,
       HighlightBlockNode,
-      {
-        replace: YouTubeNode,
-        with: (node: YouTubeNode) => new YouTubeNode(node.getVideoId())
-      }
+      YouTubeNode  // Changed this line - remove the replace object
     ],
     editorState: () => {
       const root = $getRoot();
