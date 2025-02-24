@@ -3,6 +3,8 @@ export interface ToolbarState {
   isItalic: boolean
   isQuote: boolean
   isHighlight: boolean
+  isParagraph: boolean
+  isH1: boolean
 }
 
 export interface ToolbarButtonProps {

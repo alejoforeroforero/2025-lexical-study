@@ -1,8 +1,9 @@
 import { useCallback, useState, useEffect } from 'react'
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext'
-import { $getSelection, $isRangeSelection, $isElementNode, SELECTION_CHANGE_COMMAND } from 'lexical'
+import { $getSelection, $isRangeSelection, $isElementNode, SELECTION_CHANGE_COMMAND, $isParagraphNode } from 'lexical'
 import { $isQuoteNode } from '@lexical/rich-text'
 import { $isHighlightBlockNode } from '../../nodes/HighlightBlockNode'
+import { $isHeadingNode } from '../../nodes/HeadingNode'
 import type { ToolbarState } from '../types/toolbar'
 
 export function useToolbarState() {
@@ -11,7 +12,9 @@ export function useToolbarState() {
     isBold: false,
     isItalic: false,
     isQuote: false,
-    isHighlight: false
+    isHighlight: false,
+    isParagraph: false,
+    isH1: false
   })
 
   const updateToolbar = useCallback(() => {
@@ -22,7 +25,9 @@ export function useToolbarState() {
         isBold: false,
         isItalic: false,
         isQuote: false,
-        isHighlight: false
+        isHighlight: false,
+        isParagraph: false,
+        isH1: false
       }))
       return
     }
@@ -37,7 +42,9 @@ export function useToolbarState() {
       isBold: selection.hasFormat('bold'),
       isItalic: selection.hasFormat('italic'),
       isQuote: element ? $isQuoteNode(element) : false,
-      isHighlight: element && $isElementNode(element) ? $isHighlightBlockNode(element) : false
+      isHighlight: element && $isElementNode(element) ? $isHighlightBlockNode(element) : false,
+      isParagraph: element ? $isParagraphNode(element) : false,
+      isH1: element && $isElementNode(element) ? $isHeadingNode(element) : false
     }))
   }, [])
 

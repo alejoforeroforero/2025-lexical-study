@@ -1,10 +1,17 @@
-import { LexicalComposer } from '@lexical/react/LexicalComposer'
+import { 
+  LexicalComposer,
+  InitialConfigType
+} from '@lexical/react/LexicalComposer'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin'
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin'
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
 import { QuoteNode } from '@lexical/rich-text'
 import { HighlightBlockNode } from './nodes/HighlightBlockNode'
+import { YouTubeNode } from './nodes/YouTubeNode'
+import { HeadingNode } from './nodes/HeadingNode'
+import { YouTubePlugin } from './plugins/YouTubePlugin'
+import { $createParagraphNode, $getRoot } from 'lexical'
 
 import EditorTheme from './themes/default'
 import { Toolbar } from './Toolbar'
@@ -12,13 +19,28 @@ import { Toolbar } from './Toolbar'
 import './styles/editor.css'
 
 export function Editor() {
-  const initialConfig = {
+  const initialConfig: InitialConfigType = {
     namespace: 'MyEditor',
     onError: (error: Error) => {
       console.error(error)
     },
     theme: EditorTheme,
-    nodes: [QuoteNode, HighlightBlockNode]
+    nodes: [
+      QuoteNode,
+      HeadingNode,
+      HighlightBlockNode,
+      {
+        replace: YouTubeNode,
+        with: (node: YouTubeNode) => new YouTubeNode(node.getVideoId())
+      }
+    ],
+    editorState: () => {
+      const root = $getRoot();
+      if (root.getFirstChild() === null) {
+        const paragraph = $createParagraphNode();
+        root.append(paragraph);
+      }
+    }
   }
 
   return (
@@ -37,6 +59,7 @@ export function Editor() {
           ErrorBoundary={LexicalErrorBoundary}
         />
         <HistoryPlugin />
+        <YouTubePlugin />
       </div>
     </LexicalComposer>
   )

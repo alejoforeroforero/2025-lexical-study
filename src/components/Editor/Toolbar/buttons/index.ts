@@ -1,4 +1,7 @@
+export { ParagraphButton } from './ParagraphButton'
+export { H1Button } from './H1Button'
 export { BoldButton } from './BoldButton'
 export { ItalicButton } from './ItalicButton'
 export { QuoteButton } from './QuoteButton'
 export { HighlightBlockButton } from './HighlightBlockButton'
+export { YouTubeButton } from './YouTubeButton'
