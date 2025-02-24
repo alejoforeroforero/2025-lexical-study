@@ -22,7 +22,14 @@ export function H1Button({ isActive }: ToolbarButtonProps) {
   return (
     <button 
       onClick={handleClick}
-      className={`toolbar-button ${isActive ? 'active' : ''}`}
+      className={`
+        px-3 py-1.5 rounded text-sm font-medium transition-colors
+        ${isActive 
+          ? 'bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700' 
+          : 'bg-gray-100 hover:bg-gray-200 text-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200'}
+        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800
+      `}
+      aria-label="Format as heading 1"
       aria-pressed={isActive}
     >
       H1

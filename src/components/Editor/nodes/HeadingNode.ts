@@ -16,6 +16,7 @@ export class HeadingNode extends ElementNode {
 
   createDOM(): HTMLElement {
     const dom = document.createElement('h1')
+    dom.className = 'PlaygroundEditorTheme__h1'
     return dom
   }
 

@@ -1,102 +1,21 @@
-.editor-container {
-  margin: 20px auto;
-  border-radius: 2px;
-  color: #000;
-  position: relative;
-  line-height: 20px;
-  font-weight: 400;
-  text-align: left;
-  border: 1px solid #999;
-}
-
-.editor-input {
+/* Remove most of the old styles and keep only what's necessary */
+.editor-scroller {
   min-height: 150px;
+  border: 0;
   resize: none;
-  font-size: 15px;
+  cursor: text;
+  display: block;
   position: relative;
-  tab-size: 1;
   outline: 0;
-  padding: 15px 10px;
-  caret-color: #444;
-}
-
-.editor-placeholder {
-  color: #999;
   overflow: hidden;
-  position: absolute;
-  text-overflow: ellipsis;
-  top: 45px;
-  /* Updated from 15px to account for toolbar height */
-  left: 10px;
-  font-size: 15px;
-  user-select: none;
-  display: inline-block;
-  pointer-events: none;
+  resize: vertical;
 }
 
-/* Theme classes */
-.editor-paragraph {
-  margin: 0;
-  margin-bottom: 8px;
-}
-
-.editor-text-bold {
-  font-weight: bold;
-}
-
-.editor-text-italic {
-  font-style: italic;
-}
-
-.editor-text-underline {
-  text-decoration: underline;
-}
-
-.editor-text-code {
-  background-color: rgb(240, 242, 245);
-  padding: 1px 0.25rem;
-  font-family: Menlo, Consolas, Monaco, monospace;
-  font-size: 94%;
-}
-
-.editor-highlight-block {
-  margin: 8px 0;
-  padding: 8px 16px;
-  background-color: #fff3cd;
-  border-left: 4px solid #ffc107;
-  border-radius: 4px;
-}
-
-.toolbar {
-  border-bottom: 1px solid #999;
-  padding: 8px;
-  display: flex;
-  gap: 8px;
-}
-
-.toolbar-button {
-  border: 1px solid #999;
-  background: none;
-  border-radius: 4px;
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-.toolbar-button:hover {
-  background: #f1f1f1;
-}
-
-.toolbar-button.active {
-  background: #e1e1e1;
-  border-color: #666;
-}
-
-/* Add to your existing CSS */
 .youtube-wrapper {
   position: relative;
-  height: 340px; /* fixed height instead of padding-bottom */
-  margin: 1em auto; /* centered with auto margins */
-  max-width: 640px; /* maximum width */
+  height: 340px;
+  margin: 1em auto;
+  max-width: 640px;
 }
 
 .youtube-wrapper iframe {

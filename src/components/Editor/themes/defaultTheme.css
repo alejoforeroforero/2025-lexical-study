@@ -32,10 +32,11 @@
 }
 
 .PlaygroundEditorTheme__h1 {
-  font-size: 24px;
-  color: rgb(5, 5, 5);
-  font-weight: 400;
-  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 24px 0 12px 0;
+  line-height: 1.2;
+  color: inherit; /* This will make it inherit from the parent's text color */
 }
 
 .PlaygroundEditorTheme__h2 {
